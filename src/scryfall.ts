@@ -6,8 +6,18 @@ import {
   ScryfallSearch,
 } from './typings.d';
 
+/**
+ * Search Scryfall database for cards matching the given search pattern.
+ * @function
+ * @async
+ *
+ * @param {string} term search term
+ * @param {[string]} setMatch set to match
+ * @returns {Promise<ScryfallCardSelection[]>}
+ */
 export const searchCard = async (
-  term: string
+  term: string,
+  setMatch?: string
 ): Promise<ScryfallCardSelection[]> => {
   const query = encodeURIComponent(term);
 
@@ -29,39 +39,41 @@ export const searchCard = async (
       throw `(updateMTGItem): \n ${warnings.map(err => err).join('\n')}`;
     }
 
-    const cards = (response as ScryfallSearch).data.map(
-      ({
-        artist,
-        collector_number,
-        colors,
-        flavor_text,
-        image_uris,
-        name,
-        oracle_text,
-        rarity,
-        released_at,
-        set_name,
-        set,
-        type,
-      }) => {
-        const item: MTGItem = {
-          name,
-          colors,
-          type,
-          set,
-          set_name,
-          oracle_text,
-          flavor_text: flavor_text || null,
-          rarity,
-          collector_number,
+    const cards = (response as ScryfallSearch).data
+      .map(
+        ({
           artist,
+          collector_number,
+          colors,
+          flavor_text,
+          image_uris,
+          name,
+          oracle_text,
+          rarity,
           released_at,
-          image: image_uris.png,
-        };
+          set_name,
+          set,
+          type,
+        }) => {
+          const item: MTGItem = {
+            name,
+            colors,
+            type,
+            set,
+            set_name,
+            oracle_text,
+            flavor_text: flavor_text || null,
+            rarity,
+            collector_number,
+            artist,
+            released_at,
+            image: image_uris.png,
+          };
 
-        return item;
-      }
-    );
+          return item;
+        }
+      )
+      .filter(card => card.set === setMatch);
     // cards keyed by name, set, and collector number
     const selection: ScryfallCardSelection[] = cards.reduce((acc, card) => {
       const { name, set, collector_number } = card;
