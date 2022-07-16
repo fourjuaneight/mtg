@@ -8,6 +8,7 @@ import {
 
 /**
  * Search Scryfall database for cards matching the given search pattern.
+ * DOCS: https://scryfall.com/docs/api/cards/search
  * @function
  * @async
  *
