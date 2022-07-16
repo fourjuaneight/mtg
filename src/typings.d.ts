@@ -1,4 +1,82 @@
 /* eslint-disable camelcase */
+// HASURA
+export enum MagicColor {
+  White = 'W',
+  Blue = 'U',
+  Black = 'B',
+  Red = 'R',
+  Green = 'G',
+}
+
+export interface MTGItem {
+  id?: string;
+  name: string;
+  colors: string[];
+  type: string;
+  set: string;
+  set_name: string;
+  oracle_text: string;
+  flavor_text: string | null;
+  rarity: string;
+  collector_number: number;
+  artist: string;
+  released_at: date;
+  image: string;
+}
+
+export type CountColumn = 'artist' | 'rarity' | 'set';
+
+export interface RecordColumnAggregateCount {
+  [key: string]: number;
+}
+
+export interface HasuraInsertResp {
+  data: {
+    insert_media_mtg_one: {
+      name: string;
+    };
+  };
+}
+
+export interface HasuraUpdateResp {
+  update_media_mtg: {
+    returning: {
+      name: string;
+    }[];
+  };
+}
+
+export interface HasuraQueryResp {
+  data: {
+    media_mtg: MTGItem[];
+  };
+}
+
+export interface HasuraQueryAggregateResp {
+  data: {
+    media_mtg: {
+      [key: string]: string;
+    }[];
+  };
+}
+
+export interface HasuraErrors {
+  errors: {
+    extensions: {
+      path: string;
+      code: string;
+    };
+    message: string;
+  }[];
+}
+
+export interface RequestPayload {
+  type: string;
+  data?: MTGItem;
+  query?: string;
+  countColumn?: CountColumn;
+}
+
 // SCRYFALL
 export interface Preview {
   source: string;
@@ -141,80 +219,6 @@ export interface ScryfallError {
   details: string;
 }
 
-// HASURA
-export enum MagicColor {
-  White = 'W',
-  Blue = 'U',
-  Black = 'B',
-  Red = 'R',
-  Green = 'G',
-}
-
-export interface MTGItem {
-  id?: string;
-  name: string;
-  colors: string[];
-  type: string;
-  set: string;
-  set_name: string;
-  oracle_text: string;
-  flavor_text: string | null;
-  rarity: string;
-  collector_number: number;
-  artist: string;
-  released_at: date;
-  image: string;
-}
-
-export type CountColumn = 'artist' | 'rarity' | 'set';
-
-export interface RecordColumnAggregateCount {
-  [key: string]: number;
-}
-
-export interface HasuraInsertResp {
-  data: {
-    insert_media_mtg_one: {
-      name: string;
-    };
-  };
-}
-
-export interface HasuraUpdateResp {
-  update_media_mtg: {
-    returning: {
-      name: string;
-    }[];
-  };
-}
-
-export interface HasuraQueryResp {
-  data: {
-    media_mtg: MTGItem[];
-  };
-}
-
-export interface HasuraQueryAggregateResp {
-  data: {
-    media_mtg: {
-      [key: string]: string;
-    }[];
-  };
-}
-
-export interface HasuraErrors {
-  errors: {
-    extensions: {
-      path: string;
-      code: string;
-    };
-    message: string;
-  }[];
-}
-
-export interface RequestPayload {
-  type: string;
-  data?: MTGItem;
-  query?: string;
-  countColumn?: CountColumn;
+export interface ScryfallCardSelection {
+  [key: string]: MTGItem;
 }

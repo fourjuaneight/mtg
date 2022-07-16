@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
-import { MTGItem, ScryfallError, ScryfallSearch } from './typings.d';
-
-interface ScryfallCardSelection {
-  [key: string]: MTGItem;
-}
+import {
+  MTGItem,
+  ScryfallCardSelection,
+  ScryfallError,
+  ScryfallSearch,
+} from './typings.d';
 
 export const searchCard = async (
   term: string
