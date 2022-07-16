@@ -126,7 +126,7 @@ export interface ScryfallCardData {
   reprint: boolean;
 }
 
-export interface ScryfallSearchResponse {
+export interface ScryfallSearch {
   has_more: boolean;
   object: string;
   data: ScryfallCardData[];
