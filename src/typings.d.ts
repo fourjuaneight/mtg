@@ -70,10 +70,17 @@ export interface HasuraErrors {
   }[];
 }
 
+export type RequestType = 'Insert' | 'Update' | 'Search' | 'LookUp' | 'Count';
+
+export interface RequestQuery {
+  name: string;
+  set?: string;
+}
+
 export interface RequestPayload {
-  type: string;
+  type: RequestType;
   data?: MTGItem;
-  query?: string;
+  query?: string | RequestQuery;
   countColumn?: CountColumn;
 }
 
