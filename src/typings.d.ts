@@ -202,12 +202,6 @@ export interface HasuraQueryAggregateResp {
   };
 }
 
-export interface HasuraQueryTagsResp {
-  data: {
-    [key: string]: { name: string }[];
-  };
-}
-
 export interface HasuraErrors {
   errors: {
     extensions: {
@@ -220,7 +214,6 @@ export interface HasuraErrors {
 
 export interface RequestPayload {
   type: string;
-  tagList?: string;
   data?: MTGItem;
   query?: string;
   countColumn?: CountColumn;
