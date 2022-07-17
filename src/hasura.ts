@@ -217,14 +217,6 @@ export const searchMTGItems = async (pattern: string): Promise<MTGItem[]> => {
  * @returns {Promise<string>}
  */
 export const addMTGItem = async (item: MTGItem): Promise<string> => {
-  const query = `
-    mutation {
-      insert_media_mtg_one(object: : { ${objToQueryString(item)} }) {
-        name
-      }
-    }
-  `;
-
   try {
     const existing = await searchMTGItems(item.name);
 
@@ -232,6 +224,13 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
       throw `(addMTGItem): MTG item already exists.`;
     }
 
+    const query = `
+      mutation {
+        insert_media_mtg_one(object: : { ${objToQueryString(item)} }) {
+          name
+        }
+      }
+    `;
     const request = await fetch(`${HASURA_ENDPOINT}`, {
       method: 'POST',
       headers: {
