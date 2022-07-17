@@ -49,6 +49,7 @@ export const searchCard = async (
 
     console.log({ query }, response);
 
+    const fmtPar = new RegExp('\n', 'g');
     const cards = (response as ScryfallSearch).data.map(
       ({
         artist,
@@ -71,8 +72,8 @@ export const searchCard = async (
           type,
           set: set.toUpperCase(),
           set_name,
-          oracle_text,
-          flavor_text: flavor_text || '',
+          oracle_text: oracle_text.replace(fmtPar, '\\n'),
+          flavor_text: flavor_text?.replace(fmtPar, '\\n') || '',
           rarity,
           collector_number: parseInt(collector_number, 10),
           artist,
