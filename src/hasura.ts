@@ -128,7 +128,7 @@ export const queryMTGAggregateCount = async (
     if (response.errors) {
       const { errors } = response as HasuraErrors;
 
-      throw `(queryMTGAggregateCount) - ${table}: \n ${errors
+      throw `(queryMTGAggregateCount): \n ${errors
         .map(err => `${err.extensions.path}: ${err.message}`)
         .join('\n')} \n ${query}`;
     }
