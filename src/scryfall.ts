@@ -1,11 +1,18 @@
 /* eslint-disable camelcase */
 import {
-  MagicColor,
   MTGItem,
   ScryfallCardSelection,
   ScryfallError,
   ScryfallSearch,
 } from './typings.d';
+
+const magicColors: { [key: string]: string } = {
+  W: 'White',
+  U: 'Blue',
+  B: 'Black',
+  R: 'Red',
+  G: 'Green',
+};
 
 /**
  * Search Scryfall database for cards matching the given search pattern.
@@ -60,7 +67,7 @@ export const searchCard = async (
         const item: MTGItem = {
           name,
           colors:
-            colors.length !== 0 ? colors.map(color => MagicColor[color]) : null,
+            colors.length !== 0 ? colors.map(color => magicColors[color]) : null,
           type,
           set: set.toUpperCase(),
           set_name,

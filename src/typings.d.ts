@@ -1,13 +1,5 @@
 /* eslint-disable camelcase */
 // HASURA
-export enum MagicColor {
-  White = 'W',
-  Blue = 'U',
-  Black = 'B',
-  Red = 'R',
-  Green = 'G',
-}
-
 export interface MTGItem {
   id?: string;
   name: string;
