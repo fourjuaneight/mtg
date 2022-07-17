@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2022-07-17
+
+### Bug Fixes
+
+- [Change mana color lookup to use object instead of enum.](https://github.com/fourjuaneight/mtg/commit/52f668ae66825d602cade9d493dacaf816fc8261)
+- [Minor typing updates.](https://github.com/fourjuaneight/mtg/commit/702dc92c40b1311686f8db2b3a0b5b6a10ceefa5)
+- [Move query formatter inside try/catch.](https://github.com/fourjuaneight/mtg/commit/9845f5cddc43b772c3f084dc415c3c633caa9bec)
+- [Return empty arrays instead of null and filter them on mutations.](https://github.com/fourjuaneight/mtg/commit/d366628014e7f03cc3098a22bd646174cbbf7e57)
+- [Escape new lines on card descriptions.](https://github.com/fourjuaneight/mtg/commit/a270976009fd8e00cb3d0247ffd26d1e36642bbc)
+- [Syntax error on hasura mutations.](https://github.com/fourjuaneight/mtg/commit/769335a2462ae00db6a1d5b914bb2c4c8fa05d00)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/d1777038625e8dcafdaf871752ad752bc8070a72)
+- [Change set accronym to uppercase.](https://github.com/fourjuaneight/mtg/commit/1a153ff8dec7022ea456c38cc58c08586a6cc7db)
+- [Add logs for debugging.](https://github.com/fourjuaneight/mtg/commit/6306810cd9aeceb5becb3fedd7abd960871662d0)
+- [Further logs for debugging insert type.](https://github.com/fourjuaneight/mtg/commit/ba4d3c1448bed36cdf4732974e4ef3adfb8c66f6)
+- [Logging further up to catch syntax error.](https://github.com/fourjuaneight/mtg/commit/40ca698afa2f0573975effaa4a4af3fd5646cae5)
+- [Remove debug logs.](https://github.com/fourjuaneight/mtg/commit/bc98b58cc9719cc3fa3d6a36d77f4cfef59e909e)
+- [Minor syntax updates.](https://github.com/fourjuaneight/mtg/commit/a7eb26f51c291d7dd690d4466bd335842106706f)
+
 ## [1.0.1] - 2022-07-17
 
 ### Bug Fixes
