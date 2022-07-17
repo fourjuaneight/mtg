@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2022-07-17
+
+### Bug Fixes
+
+- [Typing optimizations.](https://github.com/fourjuaneight/mtg/commit/636b13f94de061b0f9588c2344eac2ec71734bef)
+- [Convert collector number to integer.](https://github.com/fourjuaneight/mtg/commit/21c9df02bf4e6e6cd4543e51da10d49343781493)
+- [Only filter scryfall data if set filter is present.](https://github.com/fourjuaneight/mtg/commit/df264aecb05be890dde71005f4c943fc65dd78af)
+- [Card lookup optimizations.](https://github.com/fourjuaneight/mtg/commit/5f118be2a8746b137c55a2e999fd9e35cbd5ce01)
+- [Better scryfall error handling.](https://github.com/fourjuaneight/mtg/commit/d9d970c7ed351223fbc855a9defd6c2d23aedbad)
+- [Update deprecate object lookup.](https://github.com/fourjuaneight/mtg/commit/0587de6ebf4b6b9cb52384df716f670489cbf023)
+
+### Features
+
+- [Convert magic color codes to words.](https://github.com/fourjuaneight/mtg/commit/b70800d09daaaeb9e2e948d7fb238cfc02207f25)
+- [Remove empty values from item insert.](https://github.com/fourjuaneight/mtg/commit/37a5471ebf93627980006727440b5bb19c429ced)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/9e9f3fb5f1a0f8a887048ff8022e66fb355731fe)
+- [Remove deprecated variable.](https://github.com/fourjuaneight/mtg/commit/177bbe79ef172965b8fa501100389ee461df8661)
+- [Minor syntax updates.](https://github.com/fourjuaneight/mtg/commit/ab772790eabf631593bc2976cb5f1f3ab171a453)
+- [Minor syntax optimizations.](https://github.com/fourjuaneight/mtg/commit/8c587c5f92d09a3e01bd6f0bc39d2051e18a4a7e)
+- [Log scryfall api response.](https://github.com/fourjuaneight/mtg/commit/afa7652ce7a38e4b7578414566c49dfdcfe6fb71)
+- [More logs for debugging.](https://github.com/fourjuaneight/mtg/commit/d28a5b6b20339dcbc88e971a01ddfaed02cc6e51)
+- [Log scryfall response for better debugging.](https://github.com/fourjuaneight/mtg/commit/c90d4a51f378aaf214f1483a67f855cf3d22813f)
+
 ## [1.0.0] - 2022-07-16
 
 ### Bug Fixes
