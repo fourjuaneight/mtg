@@ -39,6 +39,8 @@ export const searchCard = async (
       throw `(updateMTGItem): \n ${warnings.map(err => err).join('\n')}`;
     }
 
+    console.log(response);
+
     const cards = (response as ScryfallSearch).data.map(
       ({
         artist,
