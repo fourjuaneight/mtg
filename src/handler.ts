@@ -58,12 +58,14 @@ const missingData = (data: MTGItem | undefined): boolean => {
  */
 const handleAction = async (payload: RequestPayload): Promise<Response> => {
   try {
+    console.log({ payload });
     // determine which type and method to use
     switch (true) {
       case payload.type === 'Insert': {
         const insertData = payload.data as MTGItem;
+        console.log({ insertData });
         const saved = await addMTGItem(insertData);
-
+        console.log({ saved });
         return new Response(
           JSON.stringify({
             saved,

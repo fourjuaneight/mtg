@@ -217,6 +217,7 @@ export const searchMTGItems = async (pattern: string): Promise<MTGItem[]> => {
  * @returns {Promise<string>}
  */
 export const addMTGItem = async (item: MTGItem): Promise<string> => {
+  console.log({ item });
   try {
     const existing = await searchMTGItems(item.name);
     console.log({ existing });
