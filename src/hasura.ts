@@ -228,7 +228,7 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
 
     const query = `
       mutation {
-        insert_media_mtg_one(object: : { ${objToQueryString(item)} }) {
+        insert_media_mtg_one(object: { ${objToQueryString(item)} }) {
           name
         }
       }
@@ -275,7 +275,7 @@ export const updateMTGItem = async (
     mutation {
       update_media_mtg(
         where: {id: {_eq: "${id}"}},
-        _set: : { ${objToQueryString(item)} }
+        _set: { ${objToQueryString(item)} }
       ) {
         returning {
           name
