@@ -103,7 +103,7 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
       }
       case payload.type === 'Lookup': {
         const searchPattern = payload.query as string;
-        const searchItems = await searchCard(searchPattern.name);
+        const searchItems = await searchCard(searchPattern);
 
         return new Response(
           JSON.stringify({
