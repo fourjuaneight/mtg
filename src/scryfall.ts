@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+/* eslint-disable id-length,  camelcase */
 import {
   MTGItem,
   ScryfallCardSelection,
@@ -49,6 +49,7 @@ export const searchCard = async (
 
     console.log({ query }, response);
 
+    // eslint-disable-next-line no-control-regex
     const fmtPar = new RegExp('\n', 'g');
     const cards = (response as ScryfallSearch).data.map(
       ({
