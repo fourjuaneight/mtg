@@ -58,7 +58,6 @@ const missingData = (data: MTGItem | undefined): boolean => {
  */
 const handleAction = async (payload: RequestPayload): Promise<Response> => {
   try {
-    console.log({ payload });
     // determine which type and method to use
     switch (true) {
       case payload.type === 'Insert': {
@@ -157,6 +156,7 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
  * @returns {Promise<Response>} response object
  */
 export const handleRequest = async (request: Request): Promise<Response> => {
+  console.log({ request });
   // POST requests only
   if (request.method !== 'POST') {
     return new Response(null, {
@@ -177,6 +177,7 @@ export const handleRequest = async (request: Request): Promise<Response> => {
 
   if (contentType?.includes('application/json')) {
     const payload: RequestPayload = await request.json();
+    console.log({ payload });
     const key = request.headers.get('key');
 
     // check for required fields
