@@ -62,9 +62,8 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
     switch (true) {
       case payload.type === 'Insert': {
         const insertData = payload.data as MTGItem;
-        console.log({ insertData });
         const saved = await addMTGItem(insertData);
-        console.log({ saved });
+
         return new Response(
           JSON.stringify({
             saved,
@@ -177,7 +176,6 @@ export const handleRequest = async (request: Request): Promise<Response> => {
 
   if (contentType?.includes('application/json')) {
     const payload: RequestPayload = await request.json();
-    console.log({ payload });
     const key = request.headers.get('key');
 
     // check for required fields
