@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import {
+  MagicColor,
   MTGItem,
   ScryfallCardSelection,
   ScryfallError,
@@ -58,7 +59,7 @@ export const searchCard = async (
         }) => {
           const item: MTGItem = {
             name,
-            colors,
+            colors: colors.map(color => MagicColor[color]),
             type,
             set,
             set_name,
