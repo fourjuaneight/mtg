@@ -9,8 +9,12 @@ import {
   RecordColumnAggregateCount,
 } from './typings.d';
 
-const objToQueryString = (obj: { [key: string]: any }) =>
-  Object.keys(obj).map(key => {
+const objToQueryString = (obj: { [key: string]: any }) => {
+  const cleanObj = Object.fromEntries(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    Object.entries(obj).filter(([_, val]) => Boolean(val))
+  );
+  const columns = Object.keys(cleanObj).map(key => {
     const value = obj[key];
     const fmtValue =
       typeof value === 'string'
@@ -24,6 +28,9 @@ const objToQueryString = (obj: { [key: string]: any }) =>
 
     return `${key}: ${fmtValue}`;
   });
+
+  return columns;
+};
 
 const countUnique = (iterable: string[]) =>
   iterable.reduce((acc: RecordColumnAggregateCount, item) => {
