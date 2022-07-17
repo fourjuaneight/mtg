@@ -66,7 +66,7 @@ export const searchCard = async (
             oracle_text,
             flavor_text: flavor_text || null,
             rarity,
-            collector_number,
+            collector_number: parseInt(collector_number, 10),
             artist,
             released_at,
             image: image_uris.png,
