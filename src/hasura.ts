@@ -12,7 +12,9 @@ import {
 const objToQueryString = (obj: { [key: string]: any }) => {
   const cleanObj = Object.fromEntries(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    Object.entries(obj).filter(([_, val]) => Boolean(val))
+    Object.entries(obj).filter(([_, val]) =>
+      Array.isArray(val) ? val.length : Boolean(val)
+    )
   );
   const columns = Object.keys(cleanObj).map(key => {
     const value = obj[key];

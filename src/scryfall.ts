@@ -67,7 +67,7 @@ export const searchCard = async (
         const item: MTGItem = {
           name,
           colors:
-            colors.length !== 0 ? colors.map(color => magicColors[color]) : null,
+            colors.length !== 0 ? colors.map(color => magicColors[color]) : [],
           type,
           set: set.toUpperCase(),
           set_name,
