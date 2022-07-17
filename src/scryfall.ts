@@ -62,7 +62,7 @@ export const searchCard = async (
           colors:
             colors.length !== 0 ? colors.map(color => MagicColor[color]) : null,
           type,
-          set,
+          set: set.toUpperCase(),
           set_name,
           oracle_text,
           flavor_text: flavor_text || '',
