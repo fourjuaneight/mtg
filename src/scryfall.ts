@@ -64,7 +64,7 @@ export const searchCard = async (
             set,
             set_name,
             oracle_text,
-            flavor_text: flavor_text || null,
+            flavor_text: flavor_text || '',
             rarity,
             collector_number: parseInt(collector_number, 10),
             artist,
