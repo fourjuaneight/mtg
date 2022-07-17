@@ -11,7 +11,7 @@ export enum MagicColor {
 export interface MTGItem {
   id?: string;
   name: string;
-  colors: string[];
+  colors: string[] | null;
   type: string;
   set: string;
   set_name: string;
@@ -72,15 +72,10 @@ export interface HasuraErrors {
 
 export type RequestType = 'Insert' | 'Update' | 'Search' | 'Lookup' | 'Count';
 
-export interface RequestQuery {
-  name: string;
-  set?: string;
-}
-
 export interface RequestPayload {
   type: RequestType;
   data?: MTGItem;
-  query?: string | RequestQuery;
+  query?: string;
   countColumn?: CountColumn;
 }
 

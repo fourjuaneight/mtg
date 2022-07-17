@@ -14,12 +14,10 @@ import {
  * @async
  *
  * @param {string} term search term
- * @param {[string]} setMatch set to match
  * @returns {Promise<ScryfallCardSelection[]>}
  */
 export const searchCard = async (
-  term: string,
-  setMatch?: string
+  term: string
 ): Promise<ScryfallCardSelection[]> => {
   const query = encodeURIComponent(term);
 
@@ -58,7 +56,8 @@ export const searchCard = async (
       }) => {
         const item: MTGItem = {
           name,
-          colors: colors.map(color => MagicColor[color]),
+          colors:
+            colors.length !== 0 ? colors.map(color => MagicColor[color]) : null,
           type,
           set,
           set_name,
@@ -74,30 +73,19 @@ export const searchCard = async (
         return item;
       }
     );
-    const cleanCards = setMatch
-      ? cards.filter(card => card.set === setMatch?.toLocaleLowerCase())
-      : cards;
-    console.log(
-      cards.filter(card => card.set === setMatch?.toLocaleLowerCase()),
-      cards,
-      response
-    );
     // cards keyed by name, set, and collector number
-    const selection: ScryfallCardSelection[] = cleanCards.reduce(
-      (acc, card) => {
-        const { name, set, collector_number } = card;
-        const key = `${name} - (${set}) #${collector_number}`;
+    const selection: ScryfallCardSelection[] = cards.reduce((acc, card) => {
+      const { name, set, collector_number } = card;
+      const key = `${name} - (${set}) #${collector_number}`;
 
-        if (!acc[key]) {
-          acc[key] = {
-            [key]: card,
-          };
-        }
+      if (!acc[key]) {
+        acc[key] = {
+          [key]: card,
+        };
+      }
 
-        return acc;
-      },
-      {} as ScryfallCardSelection
-    );
+      return acc;
+    }, {} as ScryfallCardSelection);
 
     return selection;
   } catch (error) {

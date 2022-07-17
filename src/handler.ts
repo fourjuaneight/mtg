@@ -7,12 +7,7 @@ import {
 } from './hasura';
 import { searchCard } from './scryfall';
 
-import {
-  CountColumn,
-  RequestPayload,
-  MTGItem,
-  RequestQuery,
-} from './typings.d';
+import { CountColumn, RequestPayload, MTGItem } from './typings.d';
 
 // default responses
 const responseInit = {
@@ -107,11 +102,8 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
         break;
       }
       case payload.type === 'Lookup': {
-        const searchPattern = payload.query as RequestQuery;
-        const searchItems = await searchCard(
-          searchPattern.name,
-          searchPattern.set
-        );
+        const searchPattern = payload.query as string;
+        const searchItems = await searchCard(searchPattern.name);
 
         return new Response(
           JSON.stringify({
