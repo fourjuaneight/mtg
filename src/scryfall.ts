@@ -33,13 +33,14 @@ export const searchCard = async (
     );
     const response: ScryfallSearch | ScryfallError = await request.json();
 
-    if (response.warnings) {
-      const { warnings } = response as ScryfallError;
+    if (response.object === 'error') {
+      const { details, warnings } = response as ScryfallError;
+      const errMsg = warnings ? warnings.join('\n') : details;
 
-      throw `(updateMTGItem): \n ${warnings.map(err => err).join('\n')}`;
+      throw `(updateMTGItem): \n ${errMsg}`;
     }
 
-    console.log(response);
+    console.log({ query }, response);
 
     const cards = (response as ScryfallSearch).data.map(
       ({

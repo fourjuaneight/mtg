@@ -217,7 +217,7 @@ export interface ScryfallError {
   object: string;
   code: string;
   status: number;
-  warnings: string[];
+  warnings?: string[];
   details: string;
 }
 
