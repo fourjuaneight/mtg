@@ -40,8 +40,6 @@ export const searchCard = async (
 
       throw `(updateMTGItem): \n ${warnings.map(err => err).join('\n')}`;
     }
-    
-    console.log(response);
 
     const cards = (response as ScryfallSearch).data
       .map(
@@ -78,6 +76,8 @@ export const searchCard = async (
         }
       )
       .filter(card => card.set === setMatch);
+      console.log(cards);
+      console.log(response);
     // cards keyed by name, set, and collector number
     const selection: ScryfallCardSelection[] = cards.reduce((acc, card) => {
       const { name, set, collector_number } = card;
