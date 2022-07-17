@@ -70,7 +70,7 @@ export interface HasuraErrors {
   }[];
 }
 
-export type RequestType = 'Insert' | 'Update' | 'Search' | 'LookUp' | 'Count';
+export type RequestType = 'Insert' | 'Update' | 'Search' | 'Lookup' | 'Count';
 
 export interface RequestQuery {
   name: string;

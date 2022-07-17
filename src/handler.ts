@@ -106,7 +106,7 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
         );
         break;
       }
-      case payload.type === 'LookUp': {
+      case payload.type === 'Lookup': {
         const searchPattern = payload.query as RequestQuery;
         const searchItems = await searchCard(
           searchPattern.name,
@@ -207,9 +207,9 @@ export const handleRequest = async (request: Request): Promise<Response> => {
           JSON.stringify({ error: "Missing Search 'query' parameter." }),
           badReqBody
         );
-      case payload.type === 'LookUp' && !payload.query:
+      case payload.type === 'Lookup' && !payload.query:
         return new Response(
-          JSON.stringify({ error: "Missing LookUp 'query' parameter." }),
+          JSON.stringify({ error: "Missing Lookup 'query' parameter." }),
           badReqBody
         );
       case payload.type === 'Count' && !payload.countColumn:
