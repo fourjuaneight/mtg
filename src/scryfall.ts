@@ -21,11 +21,11 @@ const magicColors: { [key: string]: string } = {
  * @async
  *
  * @param {string} term search term
- * @returns {Promise<ScryfallCardSelection[]>}
+ * @returns {Promise<ScryfallCardSelection>}
  */
 export const searchCard = async (
   term: string
-): Promise<ScryfallCardSelection[]> => {
+): Promise<ScryfallCardSelection> => {
   const query = encodeURIComponent(term);
 
   try {
@@ -84,7 +84,7 @@ export const searchCard = async (
       }
     );
     // cards keyed by name, set, and collector number
-    const selection: ScryfallCardSelection[] = cards.reduce((acc, card) => {
+    const selection: ScryfallCardSelection = cards.reduce((acc, card) => {
       const { name, set, collector_number } = card;
       const key = `${name} - (${set}) #${collector_number}`;
 
