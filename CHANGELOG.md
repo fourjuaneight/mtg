@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2022-07-25
+
+### Features
+
+- [Update node version and migrate to pnpm.](https://github.com/fourjuaneight/mtg/commit/7e35fc8fe78a6377a96dfd822cf4ec9ca5e3a48d)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/8ae80e2a0a1fa746f1685f42cc9efc9055be7348)
+
 ## [1.1.0] - 2022-07-17
 
 ### Bug Fixes
