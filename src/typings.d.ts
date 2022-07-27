@@ -62,10 +62,10 @@ export interface HasuraErrors {
   }[];
 }
 
-export type RequestType = 'Insert' | 'Update' | 'Search' | 'Lookup' | 'Count';
+export type Types = 'Insert' | 'Update' | 'Search' | 'Lookup' | 'Count';
 
 export interface RequestPayload {
-  type: RequestType;
+  type: Types;
   data?: MTGItem;
   query?: string;
   countColumn?: CountColumn;
