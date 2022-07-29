@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2022-07-29
+
+### Bug Fixes
+
+- [Sign version tag commits.](https://github.com/fourjuaneight/mtg/commit/1e0e69fab0945241a346c00a682adeb634a62882)
+
+### Features
+
+- [Add default commit message when version bumping.](https://github.com/fourjuaneight/mtg/commit/9d9d3cfcde4a225491debb5e1771bec5caf883f7)
+- [Return app version on response.](https://github.com/fourjuaneight/mtg/commit/c72587f91defab0ad07f368cd0ec08e21b2d7fac)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/688236797eb606675609823259a64fb4061dd289)
+- [Minor typing optimizations.](https://github.com/fourjuaneight/mtg/commit/ec3cb60bb73c860e70838f850f7dfc4749e6f540)
+- [Update to v1.3.0.](https://github.com/fourjuaneight/mtg/commit/42f33d5023cd8b72afab3b21f9e179298c8b1827)
+
 ## [1.2.0] - 2022-07-25
 
 ### Features
