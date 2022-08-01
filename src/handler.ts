@@ -249,6 +249,7 @@ export const handleRequest = async (request: Request): Promise<Response> => {
           noAuthReqBody
         );
       default: {
+        console.log('handleRequest', { payload });
         return handleAction(payload);
       }
     }
