@@ -221,7 +221,6 @@ export const searchMTGItems = async (pattern: string): Promise<MTGItem[]> => {
 export const addMTGItem = async (item: MTGItem): Promise<string> => {
   try {
     const existing = await searchMTGItems(item.name);
-    console.log('addMTGItem', { existing, item });
 
     if (existing?.length !== 0) {
       throw `(addMTGItem): MTG item already exists.`;
@@ -243,7 +242,6 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
       body: JSON.stringify({ query }),
     });
     const response: HasuraInsertResp | HasuraErrors = await request.json();
-    console.log('addMTGItem', { response });
 
     if (response.errors) {
       const { errors } = response as HasuraErrors;
