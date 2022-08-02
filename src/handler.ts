@@ -73,7 +73,6 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
           }),
           responseInit
         );
-        break;
       }
       case payload.type === 'Update': {
         const updateData = payload.data as MTGItem;
@@ -90,7 +89,6 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
           }),
           responseInit
         );
-        break;
       }
       case payload.type === 'Search': {
         const searchPattern = payload.query as string;
@@ -103,10 +101,9 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
           }),
           responseInit
         );
-        break;
       }
       case payload.type === 'Lookup': {
-        const searchPattern = payload.query as string;
+        const searchPattern = payload.query as RequestQuery;
         const searchItems = await searchCard(searchPattern);
 
         return new Response(
@@ -116,7 +113,6 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
           }),
           responseInit
         );
-        break;
       }
       case payload.type === 'Count': {
         const queryResults = await queryMTGAggregateCount(
@@ -141,7 +137,6 @@ const handleAction = async (payload: RequestPayload): Promise<Response> => {
           }),
           responseInit
         );
-        break;
       }
     }
   } catch (error) {

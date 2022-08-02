@@ -1,6 +1,7 @@
 /* eslint-disable id-length,  camelcase */
 import {
   MTGItem,
+  RequestQuery,
   ScryfallCardSelection,
   ScryfallError,
   ScryfallSearch,
@@ -20,13 +21,15 @@ const magicColors: { [key: string]: string } = {
  * @function
  * @async
  *
- * @param {string} term search term
+ * @param {RequestQuery} queryTerm search data
  * @returns {Promise<ScryfallCardSelection>}
  */
 export const searchCard = async (
-  term: string
+  queryTerm: RequestQuery
 ): Promise<ScryfallCardSelection> => {
-  const query = encodeURIComponent(term);
+  const query = encodeURIComponent(
+    `${queryTerm.name}s:${queryTerm.set}+cn:${queryTerm.number}`
+  );
 
   try {
     const request = await fetch(
