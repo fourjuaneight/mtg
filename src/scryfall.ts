@@ -18,6 +18,7 @@ const magicColors: { [key: string]: string } = {
 /**
  * Search Scryfall database for cards matching the given search pattern.
  * DOCS: https://scryfall.com/docs/api/cards/search
+ * REF: https://scryfall.com/docs/syntax
  * @function
  * @async
  *
@@ -27,14 +28,11 @@ const magicColors: { [key: string]: string } = {
 export const searchCard = async (
   queryTerm: RequestQuery
 ): Promise<ScryfallCardSelection> => {
-  // https://scryfall.com/docs/syntax
-  const query = encodeURIComponent(
-    `${queryTerm.name}s:${queryTerm.set}+cn:${queryTerm.number}`
-  );
+  const encodedName = encodeURIComponent(queryTerm.name);
 
   try {
     const request = await fetch(
-      `https://api.scryfall.com/cards/search?order=set&q=${query}`,
+      `https://api.scryfall.com/cards/search?order=set&q=${encodedName}s:${queryTerm.set}+cn:${queryTerm.number}`,
       {
         method: 'GET',
         headers: {
