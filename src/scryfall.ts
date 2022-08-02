@@ -27,6 +27,7 @@ const magicColors: { [key: string]: string } = {
 export const searchCard = async (
   queryTerm: RequestQuery
 ): Promise<ScryfallCardSelection> => {
+  // https://scryfall.com/docs/syntax
   const query = encodeURIComponent(
     `${queryTerm.name}s:${queryTerm.set}+cn:${queryTerm.number}`
   );
