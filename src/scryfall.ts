@@ -41,13 +41,18 @@ export const searchCard = async (
         },
       }
     );
+
+    if (request.status !== 200) {
+      throw `(searchCard): ${request.status} - ${request.statusText} | ${queryTerm.set}/${queryTerm.number}`;
+    }
+
     const response: ScryfallSearch | ScryfallError = await request.json();
 
     if (response.object === 'error') {
       const { details, warnings } = response as ScryfallError;
       const errMsg = warnings ? warnings.join('\n') : details;
 
-      throw `(updateMTGItem): \n ${errMsg}`;
+      throw `(searchCard): \n ${errMsg}`;
     }
 
     console.log({ query }, response);

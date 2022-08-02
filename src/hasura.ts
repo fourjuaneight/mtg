@@ -87,6 +87,11 @@ export const queryMTGItems = async (): Promise<MTGItem[]> => {
       },
       body: JSON.stringify({ query }),
     });
+
+    if (request.status !== 200) {
+      throw `(queryMTGItems): ${request.status} - ${request.statusText}`;
+    }
+
     const response: HasuraQueryResp | HasuraErrors = await request.json();
 
     if (response.errors) {
@@ -132,6 +137,11 @@ export const queryMTGAggregateCount = async (
       },
       body: JSON.stringify({ query }),
     });
+
+    if (request.status !== 200) {
+      throw `(queryMTGAggregateCount): ${request.status} - ${request.statusText}`;
+    }
+
     const response: any = await request.json();
 
     if (response.errors) {
@@ -193,6 +203,11 @@ export const searchMTGItems = async (pattern: string): Promise<MTGItem[]> => {
       },
       body: JSON.stringify({ query }),
     });
+
+    if (request.status !== 200) {
+      throw `(searchMTGItems): ${request.status} - ${request.statusText}`;
+    }
+
     const response: HasuraQueryResp | HasuraErrors = await request.json();
 
     if (response.errors) {
@@ -241,6 +256,11 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
       },
       body: JSON.stringify({ query }),
     });
+
+    if (request.status !== 200) {
+      throw `(addMTGItem): ${request.status} - ${request.statusText}`;
+    }
+
     const response: HasuraInsertResp | HasuraErrors = await request.json();
 
     if (response.errors) {
@@ -293,6 +313,11 @@ export const updateMTGItem = async (
       },
       body: JSON.stringify({ query }),
     });
+
+    if (request.status !== 200) {
+      throw `(updateMTGItem): ${request.status} - ${request.statusText}`;
+    }
+
     const response: HasuraUpdateResp | HasuraErrors = await request.json();
 
     if (response.errors) {
