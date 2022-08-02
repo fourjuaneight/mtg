@@ -241,9 +241,12 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
       throw `(addMTGItem): MTG item already exists.`;
     }
 
+    const cleanItem = Object.fromEntries(
+      Object.entries(item).filter(([_, val]) => val !== null)
+    );
     const query = `
       mutation {
-        insert_media_mtg_one(object: { ${objToQueryString(item)} }) {
+        insert_media_mtg_one(object: { ${objToQueryString(cleanItem)} }) {
           name
         }
       }

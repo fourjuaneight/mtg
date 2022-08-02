@@ -30,10 +30,8 @@ const escapeText = (text: string): string => text.replace(/\n/g, '\\n');
 export const searchCard = async (
   queryTerm: RequestQuery
 ): Promise<ScryfallCardSelection> => {
-  console.log('searchCard', queryTerm);
   try {
     const encodedName = encodeURIComponent(queryTerm.name);
-    console.log('searchCard', encodedName);
     const request = await fetch(
       `https://api.scryfall.com/cards/search?order=set&q=${encodedName}s:${queryTerm.set}+cn:${queryTerm.number}`,
       {
@@ -44,15 +42,11 @@ export const searchCard = async (
       }
     );
 
-    console.log('searchCard', request);
-
     if (request.status !== 200) {
       throw `(searchCard): ${request.status} - ${request.statusText} | ${queryTerm.set}/${queryTerm.number}`;
     }
 
     const response: ScryfallSearch | ScryfallError = await request.json();
-
-    console.log('searchCard', response);
 
     if (response.object === 'error') {
       const { details, warnings } = response as ScryfallError;
@@ -81,16 +75,16 @@ export const searchCard = async (
           ? escapeText(oracle_text)
           : card_faces?.[0]?.oracle_text
           ? escapeText(card_faces?.[0]?.oracle_text)
-          : '';
+          : null;
         const fText = flavor_text
           ? escapeText(flavor_text)
           : card_faces?.[0]?.flavor_text
           ? escapeText(card_faces?.[0]?.flavor_text)
-          : '';
+          : null;
         const item: MTGItem = {
           name,
           colors:
-            colors.length !== 0 ? colors.map(color => magicColors[color]) : [],
+            colors.length !== 0 ? colors.map(color => magicColors[color]) : null,
           type: type_line,
           set: set.toUpperCase(),
           set_name,
@@ -101,7 +95,7 @@ export const searchCard = async (
           artist,
           released_at,
           image: image_uris?.png || card_faces?.[0]?.image_uris?.png || '',
-          back: card_faces?.[1]?.image_uris?.png || '',
+          back: card_faces?.[1]?.image_uris?.png || null,
         };
 
         return item;
