@@ -26,6 +26,7 @@ export interface RecordColumnAggregateCount {
 export interface HasuraInsertResp {
   data: {
     insert_media_mtg_one: {
+      id: string;
       name: string;
     };
   };

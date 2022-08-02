@@ -248,6 +248,7 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
     const query = `
       mutation {
         insert_media_mtg_one(object: { ${objToQueryString(cleanItem)} }) {
+          id
           name
         }
       }
@@ -275,7 +276,7 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
         .join('\n')} \n ${query}`;
     }
 
-    return (response as HasuraInsertResp).data.insert_media_mtg_one.name;
+    return (response as HasuraInsertResp).data.insert_media_mtg_one.id;
   } catch (error) {
     console.log(error);
     throw error;
