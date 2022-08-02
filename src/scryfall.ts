@@ -30,9 +30,10 @@ const escapeText = (text: string): string => text.replace(/\n/g, '\\n');
 export const searchCard = async (
   queryTerm: RequestQuery
 ): Promise<ScryfallCardSelection> => {
+  console.log('searchCard', queryTerm);
   try {
     const encodedName = encodeURIComponent(queryTerm.name);
-    console.log('searchCard', { query, encodedName });
+    console.log('searchCard', encodedName);
     const request = await fetch(
       `https://api.scryfall.com/cards/search?order=set&q=${encodedName}s:${queryTerm.set}+cn:${queryTerm.number}`,
       {
@@ -43,7 +44,7 @@ export const searchCard = async (
       }
     );
 
-    console.log('searchCard', { query, request });
+    console.log('searchCard', request);
 
     if (request.status !== 200) {
       throw `(searchCard): ${request.status} - ${request.statusText} | ${queryTerm.set}/${queryTerm.number}`;
@@ -51,7 +52,7 @@ export const searchCard = async (
 
     const response: ScryfallSearch | ScryfallError = await request.json();
 
-    console.log('searchCard', { query , response });
+    console.log('searchCard', response);
 
     if (response.object === 'error') {
       const { details, warnings } = response as ScryfallError;
