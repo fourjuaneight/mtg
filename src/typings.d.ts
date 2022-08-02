@@ -7,13 +7,14 @@ export interface MTGItem {
   type: string;
   set: string;
   set_name: string;
-  oracle_text: string;
+  oracle_text: string | null;
   flavor_text: string | null;
   rarity: string;
   collector_number: number;
   artist: string;
   released_at: string;
   image: string;
+  back: string | null;
 }
 
 export type CountColumn = 'artist' | 'rarity' | 'set';
@@ -128,6 +129,22 @@ export interface ImageUris {
   png: string;
 }
 
+export interface CardFaces {
+  object: string;
+  name: string;
+  mana_cost: string;
+  type_line: string;
+  oracle_text: string;
+  flavor_text?: string;
+  colors: string[];
+  power: string;
+  toughness: string;
+  artist: string;
+  artist_id: string;
+  illustration_id: string;
+  image_uris: ImageUris;
+}
+
 export interface Prices {
   tix: string;
   usd_etched?: null;
@@ -163,13 +180,13 @@ export interface ScryfallCardData {
   illustration_id: string;
   games: string[];
   oracle_id: string;
-  oracle_text: string;
+  oracle_text?: string;
   image_status: string;
   reserved: boolean;
   mtgo_id: number;
   mana_cost: string;
   prints_search_uri: string;
-  colors: string[];
+  colors?: string[];
   name: string;
   cardmarket_id: number;
   related_uris: RelatedUris;
@@ -189,7 +206,8 @@ export interface ScryfallCardData {
   released_at: string;
   rulings_uri: string;
   toughness?: string;
-  image_uris: ImageUris;
+  image_uris?: ImageUris;
+  card_faces?: CardFaces[];
   promo: boolean;
   booster: boolean;
   story_spotlight: boolean;

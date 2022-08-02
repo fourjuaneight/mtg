@@ -15,6 +15,8 @@ const magicColors: { [key: string]: string } = {
   G: 'Green',
 };
 
+const escapeText = (text: string): string => text.replace(/\n/g, '\\n');
+
 /**
  * Search Scryfall database for cards matching the given search pattern.
  * DOCS: https://scryfall.com/docs/api/cards/search
@@ -56,11 +58,10 @@ export const searchCard = async (
 
     console.log({ query }, response);
 
-    // eslint-disable-next-line no-control-regex
-    const fmtPar = new RegExp('\n', 'g');
     const cards = (response as ScryfallSearch).data.map(
       ({
         artist,
+        card_faces,
         collector_number,
         colors,
         flavor_text,
@@ -71,22 +72,33 @@ export const searchCard = async (
         released_at,
         set_name,
         set,
-        type,
+        type_line,
       }) => {
+        const oText = oracle_text
+          ? escapeText(oracle_text)
+          : card_faces?.[0]?.oracle_text
+          ? escapeText(card_faces?.[0]?.oracle_text)
+          : '';
+        const fText = flavor_text
+          ? escapeText(flavor_text)
+          : card_faces?.[0]?.flavor_text
+          ? escapeText(card_faces?.[0]?.flavor_text)
+          : '';
         const item: MTGItem = {
           name,
           colors:
             colors.length !== 0 ? colors.map(color => magicColors[color]) : [],
-          type,
+          type: type_line,
           set: set.toUpperCase(),
           set_name,
-          oracle_text: oracle_text.replace(fmtPar, '\\n'),
-          flavor_text: flavor_text?.replace(fmtPar, '\\n') || '',
+          oracle_text: oText,
+          flavor_text: fText,
           rarity,
           collector_number: parseInt(collector_number, 10),
           artist,
           released_at,
-          image: image_uris.png,
+          image: image_uris?.png || card_faces?.[0]?.image_uris?.png || '',
+          back: card_faces?.[1]?.image_uris?.png || '',
         };
 
         return item;
