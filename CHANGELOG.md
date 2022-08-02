@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2022-08-02
+
+### Bug Fixes
+
+- [Handle service unavailable status on all requests.](https://github.com/fourjuaneight/mtg/commit/aeb0fe0f884c43f7f48fe2807410d41bbe293598)
+- [Remove url encode on scryfall lookup.](https://github.com/fourjuaneight/mtg/commit/b4be7b2bf525872ef898b95e5d9d827d8ac0e4e3)
+
+### Features
+
+- [Add set and collector number params on card lookup.](https://github.com/fourjuaneight/mtg/commit/b484d99241b539853731321c3922fc4f9b66841f)
+- [Add support for dual faced cards.](https://github.com/fourjuaneight/mtg/commit/06c88893eb4591067098bad83acedaeb7a3f14d7)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/6918b4bd9065cb15be7e25982e86945f3197b65e)
+- [Log payloads.](https://github.com/fourjuaneight/mtg/commit/22797c9c47614bb7f91b2152cb6bd95cbc860466)
+- [Add logs for debugging.](https://github.com/fourjuaneight/mtg/commit/bb44195b81c1e3d1785ec44745c0e2d3c7b2890d)
+- [Remove logs.](https://github.com/fourjuaneight/mtg/commit/98e33d7b07ae7fcd7af56bd7e79a009491de6d52)
+- [Add docs reference.](https://github.com/fourjuaneight/mtg/commit/135d7f0553ea075ddb49710a3bafd1c5ff20d1e2)
+- [Update to v1.4.0.](https://github.com/fourjuaneight/mtg/commit/c2e941389e20b021faaec2c8503e26ca5d1301ff)
+
 ## [1.3.0] - 2022-07-29
 
 ### Bug Fixes
