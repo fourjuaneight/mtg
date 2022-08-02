@@ -49,14 +49,14 @@ export const searchCard = async (
 
     const response: ScryfallSearch | ScryfallError = await request.json();
 
+    console.log('searchCard', { query }, response);
+
     if (response.object === 'error') {
       const { details, warnings } = response as ScryfallError;
       const errMsg = warnings ? warnings.join('\n') : details;
 
       throw `(searchCard): \n ${errMsg}`;
     }
-
-    console.log({ query }, response);
 
     const cards = (response as ScryfallSearch).data.map(
       ({
