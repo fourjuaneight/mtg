@@ -242,6 +242,7 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
     }
 
     const cleanItem = Object.fromEntries(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       Object.entries(item).filter(([_, val]) => val !== null)
     );
     const query = `
