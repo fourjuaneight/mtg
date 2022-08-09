@@ -17,6 +17,12 @@ export interface MTGItem {
   back: string | null;
 }
 
+export interface MTGUpdateItem {
+  id: string;
+  image: string;
+  back?: string;
+}
+
 export type CountColumn = 'artist' | 'rarity' | 'set';
 
 export interface RecordColumnAggregateCount {

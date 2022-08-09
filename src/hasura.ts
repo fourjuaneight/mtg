@@ -6,6 +6,7 @@ import {
   HasuraQueryResp,
   HasuraUpdateResp,
   MTGItem,
+  MTGUpdateItem,
   RecordColumnAggregateCount,
 } from './typings.d';
 
@@ -289,18 +290,20 @@ export const addMTGItem = async (item: MTGItem): Promise<string> => {
  * @async
  *
  * @param {string} id item id
- * @param {MTGItem} item data to update
+ * @param {MTGUpdateItem} item data to update
  * @returns {Promise<string>}
  */
 export const updateMTGItem = async (
   id: string,
-  item: MTGItem
+  item: MTGUpdateItem
 ): Promise<string[]> => {
   const query = `
     mutation {
       update_media_mtg(
         where: {id: {_eq: "${id}"}},
-        _set: { ${objToQueryString(item)} }
+        _set: {
+          image: "${item.image}"${item.back ? `, back: "${item.back}"` : ''}
+        }
       ) {
         returning {
           name
