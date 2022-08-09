@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2022-08-09
+
+### Bug Fixes
+
+- [Ignore unused var.](https://github.com/fourjuaneight/mtg/commit/5aacf2349c157d08f1d08796fc9dccfe9f886ffc)
+- [Add missing parent object on update mutation response.](https://github.com/fourjuaneight/mtg/commit/7df20b41c77b7270cfd02828055de9fd84b55a97)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/5874a4595928df060c5d62519de913f223b86b41)
+- [Better logging on scryfall request.](https://github.com/fourjuaneight/mtg/commit/a55e3868c0639fc4546b063479f7400f70526a92)
+- [Add logs for debugging.](https://github.com/fourjuaneight/mtg/commit/16180fa20551887bcfe2436a2edeb777acbb78e8)
+- [Further debugging.](https://github.com/fourjuaneight/mtg/commit/e2c543aeec05e68e0d680cb10e1889b0c84afac4)
+- [Remove null items before saving card.](https://github.com/fourjuaneight/mtg/commit/b6fd6a9946503de5d4c0a39b4efb64fbe2033216)
+- [Return item id on insertion for image upload updates.](https://github.com/fourjuaneight/mtg/commit/0151c5e9d86e9e18bc11ea425f432cc429c5b37f)
+- [Minor syntax optimizations.](https://github.com/fourjuaneight/mtg/commit/a3eeb191352032045b4b85474aa9c1f60f885de1)
+- [Add debug logs.](https://github.com/fourjuaneight/mtg/commit/00462946681400eb6242c43c9626a27d9daff550)
+- [Update to v1.4.1.](https://github.com/fourjuaneight/mtg/commit/e52739925e8ec350869728874478df8934295494)
+
 ## [1.4.0] - 2022-08-02
 
 ### Bug Fixes
