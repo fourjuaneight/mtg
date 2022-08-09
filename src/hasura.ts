@@ -321,14 +321,12 @@ export const updateMTGItem = async (
       },
       body: JSON.stringify({ query }),
     });
-    console.log('updateMTGItem', request);
 
     if (request.status !== 200) {
       throw `(updateMTGItem): ${request.status} - ${request.statusText}`;
     }
 
     const response: HasuraUpdateResp | HasuraErrors = await request.json();
-    console.log('updateMTGItem', response);
 
     if (response.errors) {
       const { errors } = response as HasuraErrors;
@@ -338,7 +336,7 @@ export const updateMTGItem = async (
         .join('\n')} \n ${query}`;
     }
 
-    return (response as HasuraUpdateResp).update_media_mtg.returning.map(
+    return (response as HasuraUpdateResp).data.update_media_mtg.returning.map(
       ({ name }) => name
     );
   } catch (error) {

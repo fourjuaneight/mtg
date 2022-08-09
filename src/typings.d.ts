@@ -39,10 +39,12 @@ export interface HasuraInsertResp {
 }
 
 export interface HasuraUpdateResp {
-  update_media_mtg: {
-    returning: {
-      name: string;
-    }[];
+  data: {
+    update_media_mtg: {
+      returning: {
+        name: string;
+      }[];
+    };
   };
 }
 
