@@ -321,12 +321,14 @@ export const updateMTGItem = async (
       },
       body: JSON.stringify({ query }),
     });
+    console.log('updateMTGItem', request);
 
     if (request.status !== 200) {
       throw `(updateMTGItem): ${request.status} - ${request.statusText}`;
     }
 
     const response: HasuraUpdateResp | HasuraErrors = await request.json();
+    console.log('updateMTGItem', response);
 
     if (response.errors) {
       const { errors } = response as HasuraErrors;
