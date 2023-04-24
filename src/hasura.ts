@@ -182,10 +182,10 @@ export const searchMTGItems = async (pattern: string, set?: string, num?: number
           },
           set: {
             _iregex: "${set || '.*'}"
-          },
+          }${num ? `,
           collector_number: {
-            _iregex: "${num || '.*'}"
-          }
+            _eq: ${num}
+          }` : ''}
         }
       ) {
         name
