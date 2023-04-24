@@ -258,12 +258,7 @@ export const handleRequest = async (request: Request): Promise<Response> => {
     default:
       const queryItems = await queryMTGItems();
 
-      return new Response(
-        JSON.stringify({
-          items: queryItems,
-          version,
-        }),
-        responseInit
-      );
+      console.log('handleRequest', { queryItems });
+      return new Response(JSON.stringify(queryItems), responseInit);
   }
 };
