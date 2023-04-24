@@ -238,7 +238,6 @@ export const handleRequest = async (request: Request): Promise<Response> => {
     case isGet:
       const queryItems = await queryMTGItems();
 
-      console.log('Request', { request });
       console.log('handleRequest', { queryItems });
       return new Response(JSON.stringify(queryItems), responseInit);
     case !key:
