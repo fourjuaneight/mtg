@@ -230,16 +230,17 @@ export const handleRequest = async (request: Request): Promise<Response> => {
         }),
         badReqBody
       );
-    case !isGet && !isPost:
-      return new Response(JSON.stringify({ version }), {
-        status: 405,
-        statusText: 'Method Not Allowed',
-      });
     case !isJson:
       return new Response(JSON.stringify({ version }), {
         status: 415,
         statusText: 'Unsupported Media Type',
       });
+    case isGet:
+      const queryItems = await queryMTGItems();
+
+      console.log('Request', { request });
+      console.log('handleRequest', { queryItems });
+      return new Response(JSON.stringify(queryItems), responseInit);
     case !key:
       return new Response(
         JSON.stringify({ error: "Missing 'key' header.", version }),
@@ -256,9 +257,9 @@ export const handleRequest = async (request: Request): Promise<Response> => {
     case isPost:
       return handlePost(request);
     default:
-      const queryItems = await queryMTGItems();
-
-      console.log('handleRequest', { queryItems });
-      return new Response(JSON.stringify(queryItems), responseInit);
+      return new Response(JSON.stringify({ version }), {
+        status: 405,
+        statusText: 'Method Not Allowed',
+      });
   }
 };
