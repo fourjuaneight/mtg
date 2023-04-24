@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2023-04-24
+
+### Bug Fixes
+
+- [Add optional chaining to possibly undefined arrays.](https://github.com/fourjuaneight/mtg/commit/c1581cb080a2e098c201282ad75afbca4b6c51f0)
+- [Add set to hasura query to ensure proper lookup on existing.](https://github.com/fourjuaneight/mtg/commit/2d34044d1602b3d0e8d9996039058147739c4952)
+- [Add collector number to existing lookup.](https://github.com/fourjuaneight/mtg/commit/4db0e588054f6a928853728e69ea743d39751ca3)
+- [Use int for optional collector number lookup.](https://github.com/fourjuaneight/mtg/commit/856177b9b6c17dce05893bb02ca9fdd4f68331a9)
+
+### Features
+
+- [Add release creating on new tag via changelog action.](https://github.com/fourjuaneight/mtg/commit/d04bfe80c6ab5092ae077c5549756bca82aeb6be)
+- [Add query via GET and update handler.](https://github.com/fourjuaneight/mtg/commit/0f94c1aa68234728fc561056225fc7ffe14c534d)
+- [Responde to GET without auth key.](https://github.com/fourjuaneight/mtg/commit/c8f6f79ea569f4fa58a7976d10d16381ecfa8e82)
+
+### Miscellaneous Tasks
+
+- [Update Changelog.](https://github.com/fourjuaneight/mtg/commit/5d64a7358e5b26e4df2899b9ffe69785959d8532)
+- [Minor syntax fixes.](https://github.com/fourjuaneight/mtg/commit/eef307b17cc7e6a8f394c52495b7caf67578d21e)
+- [Return only items on GET and log them.](https://github.com/fourjuaneight/mtg/commit/5afab6d08cedd9969d519f6622583ac6fee59820)
+- [Syntax cleanup.](https://github.com/fourjuaneight/mtg/commit/ad5f78a9b3a48a1eed246b1687def9e13fbdbc0b)
+- [Update to v1.5.0.](https://github.com/fourjuaneight/mtg/commit/ac31b4fff091f6f0d70168149b7ce81101dc5409)
+
 ## [1.4.1] - 2022-08-09
 
 ### Bug Fixes
