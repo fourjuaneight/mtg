@@ -1,6 +1,6 @@
 {
   "name": "mtg",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Serverless functions to save Magic The Gathering cards information to a Hasura database.",
   "main": "dist/worker.js",
   "scripts": {
