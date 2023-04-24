@@ -171,12 +171,19 @@ export const queryMTGAggregateCount = async (
  * @param {string} term mtg item name
  * @returns {Promise<MTGItem[]>}
  */
-export const searchMTGItems = async (pattern: string): Promise<MTGItem[]> => {
+export const searchMTGItems = async (pattern: string, set?: string): Promise<MTGItem[]> => {
   const query = `
     {
       media_mtg(
-        order_by: {name: asc},
-        where: {name: {_iregex: ".*${pattern}.*"}}
+        order_by: { name: asc },
+        where: {
+          name: {
+            _iregex: ".*${pattern}.*"
+          },
+          set: {
+            _iregex: "${set || '.*'}"
+          }
+        }
       ) {
         name
         colors
@@ -236,7 +243,7 @@ export const searchMTGItems = async (pattern: string): Promise<MTGItem[]> => {
  */
 export const addMTGItem = async (item: MTGItem): Promise<string> => {
   try {
-    const existing = await searchMTGItems(item.name);
+    const existing = await searchMTGItems(item.name, item.set);
 
     if (existing?.length !== 0) {
       throw `(addMTGItem): MTG item already exists.`;
